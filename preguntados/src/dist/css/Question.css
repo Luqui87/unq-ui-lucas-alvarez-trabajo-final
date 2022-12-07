@@ -9,14 +9,13 @@
     "option3 option4"
     "progressBar progressBar"
     "Respuesta Respuesta"; 
-  justify-content: stretch; 
-  align-content: stretch; 
-  align-items: stretch; 
+  justify-content: stretch;  
   position: absolute;
   background-color: #282c34;
   text-align: center;
   width: 100%;
   font-size: 40px;
+  color: white;
 }
 
 .Pregunta { 

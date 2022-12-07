@@ -15,9 +15,6 @@ function Dificulty(){
   
   
     function renderDificultades(){
-      if(dificultades.length === 0){
-        return <div>Loading</div>
-      }
       return(
         <div className='dificultades'>
             {dificultades.map(dificultad => <button className="btn-hover color-11" key={dificultad} onClick={() => handleDifficulty(dificultad)}>{dificultad}</button>)}
@@ -31,7 +28,7 @@ function Dificulty(){
   
     if (dificultades.length === 0){
       return(
-        <div>Loading</div>
+        <div className="difficulty">Loading</div>
       )
     }
     
