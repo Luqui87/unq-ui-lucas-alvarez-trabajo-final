@@ -11,7 +11,7 @@ function Question(){
     const [currentQuestion ,setCurrentQuestion] = useState("")
     const [order,setOrder]  = useState(0)
     const [loading,setLoading] = useState(true)
-    const [respuestas, setRespuestas] = useState(0)
+    const [respuestasCorrectas, setRespuestasCorrectas] = useState(0)
     const [showResult, setShowResult] = useState(false)
     const [answer, setAnswer] = useState(false)
     const [porcentage, setPorcentage] = useState(0)
@@ -48,7 +48,7 @@ function Question(){
         setPorcentage(100 * (order +1) / questions.length )
         setShowResult(false)
         if (answer){
-           setRespuestas(respuestas + 1)
+           setRespuestasCorrectas(respuestasCorrectas + 1)
         }
         if (order + 1 < questions.length){
             setCurrentQuestion(questions.at(order + 1))
@@ -63,7 +63,7 @@ function Question(){
                     setCurrentQuestion(response.at(0))
                 } )
         setOrder(0)
-        setRespuestas(0)
+        setRespuestasCorrectas(0)
         setShowResult(false)
         setAnswer(false)
         setPorcentage(0)
@@ -75,7 +75,7 @@ function Question(){
     if (order  === questions.length){
         return (
             <div>
-                <Final cantCorrectAnswers = {respuestas} cantQuestions = {questions.length} VolverAJugar = {() => VolverAJugar()} />
+                <Final cantCorrectAnswers = {respuestasCorrectas} cantQuestions = {questions.length} VolverAJugar = {() => VolverAJugar()} />
             </div>
         )
     }
@@ -83,7 +83,7 @@ function Question(){
     return (
         <div className="container">
             <div className="Pregunta">
-                {currentQuestion.question}
+                <p>{currentQuestion.question}</p>
             </div>
             <div className="option1">
                 <button className="button" onClick={() => handleAnswer("option1")}>{currentQuestion.option1}</button>
@@ -99,6 +99,7 @@ function Question(){
             </div>
             <div className="progressBar">
             <ProgressBar striped className="mt-10" animated variant="danger" now={porcentage} />
+            <p>Respuestas Correctas: {respuestasCorrectas}</p>
             </div>
             { showResult ? <Response answer = {() => getAnser()} nextQuestion = {() => nextQuestion()} /> : null}
             

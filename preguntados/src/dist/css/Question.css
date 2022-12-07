@@ -101,3 +101,7 @@ html, body , .container {
   padding-left: 15%;
   padding-right: 15%;
 }
+
+.progress-Bar{
+  height: 40px;
+}
