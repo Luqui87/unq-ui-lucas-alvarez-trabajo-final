@@ -47,9 +47,6 @@ function Question(){
         setOrder(order + 1)
         setPorcentage(100 * (order +1) / questions.length )
         setShowResult(false)
-        if (answer){
-           setRespuestasCorrectas(respuestasCorrectas + 1)
-        }
         if (order + 1 < questions.length){
             setCurrentQuestion(questions.at(order + 1))
         }
@@ -101,7 +98,7 @@ function Question(){
             <ProgressBar striped className="mt-10" animated variant="danger" now={porcentage} />
             <p>Respuestas Correctas: {respuestasCorrectas}</p>
             </div>
-            { showResult ? <Response answer = {() => getAnser()} nextQuestion = {() => nextQuestion()} /> : null}
+            { showResult ? <Response answer = {() => getAnser()} nextQuestion = {() => nextQuestion()} sumarRespuestaCorrecta= {() => setRespuestasCorrectas(respuestasCorrectas + 1)} /> : null}
             
         </div>
     );
@@ -109,7 +106,7 @@ function Question(){
 
 export default Question;
 
-function Response({answer, nextQuestion}){
+function Response({answer, nextQuestion, sumarRespuestaCorrecta}){
 
     const [message, setMessage] = useState("")
     const [variant, setVariant] = useState("")
@@ -118,6 +115,7 @@ function Response({answer, nextQuestion}){
         if (answer()){
             setMessage("Correcto")
             setVariant('success')
+            sumarRespuestaCorrecta()
         }
         else{
             setMessage("Incorrecto")
