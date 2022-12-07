@@ -1,12 +1,13 @@
 .container {  
   display: grid; 
   grid-template-columns: 1fr 1fr; 
-  grid-template-rows: 1fr 1fr 1fr 1fr; 
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr; 
   gap: 0px 0px; 
   grid-template-areas: 
     "Pregunta Pregunta"
     "option1 option2"
     "option3 option4"
+    "progressBar progressBar"
     "Respuesta Respuesta"; 
   justify-content: stretch; 
   align-content: stretch; 
@@ -23,8 +24,9 @@
   text-align: center;
   margin-left: 30%;
   margin-right: 30%;
-  margin-top: 20px;
+  margin-top: 30px;
   font-size: xx-large;
+  color: white;
 }
 
 .option1 { 
@@ -58,7 +60,7 @@
 
 html, body , .container {
   min-height: 100%;
-  min-width: 100%; /* this is the important part*/
+  min-width: 100%; 
 }
 
 .button {
@@ -72,6 +74,7 @@ html, body , .container {
   border-radius: 15px;
   box-shadow: 0 9px #999;
   width: 100%;
+  margin-top: 20px;
 }
 
 .button:hover {background-color: #fc3a52}
@@ -82,6 +85,20 @@ html, body , .container {
   transform: translateY(4px);
 }
 
-.card-pregunta{
-  background-color: #999;
+.Respuesta{
+  grid-area: Respuesta;
+  text-align: center;
+  margin-left: 30%;
+  margin-right: 30%;
+  font-size: xx-large;
+  margin-top: -3%;
+}
+
+
+.progressBar{
+  grid-area: progressBar;
+  height: 30px;
+  margin-top: 2%;
+  padding-left: 15%;
+  padding-right: 15%;
 }

@@ -1,14 +1,12 @@
-import { createContext, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { ContextProvider } from './Context';
 import Dificulty from './Dificulty';
 import Question from './Question';
+import Final from './Final';
 
 
 function App() {
-  
+
   return (
-    <ContextProvider>
     <Router>
       <Routes>
         <Route
@@ -17,9 +15,9 @@ function App() {
           />
         <Route path="/difficulty" element = {<Dificulty />} />
         <Route path="/question" element = {<Question />} />
+        <Route path="/final" element = {<Final />} />
       </Routes>
     </Router>
-    </ContextProvider>
   );
 }
 

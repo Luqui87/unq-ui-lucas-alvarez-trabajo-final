@@ -1,20 +1,16 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getDificultades } from '../Api/api';
 import '../dist/css/Dificulty.css';
-import Button from 'react-bootstrap/Button';
-import Context from './Context';
 import { useNavigate } from 'react-router-dom';
 
 function Dificulty(){
     const [dificultades, setDificultades] = useState([]);
-    const {setDifficulty} = useContext(Context)
 
     let navigate = useNavigate()
   
     useEffect(() => {
         getDificultades()
         .then(dificultades => setDificultades(dificultades))
-        .catch(error => console.error(error))
       },[])
   
   
@@ -24,14 +20,13 @@ function Dificulty(){
       }
       return(
         <div className='dificultades'>
-            {dificultades.map(dificultad => <button class="btn-hover color-11" key={dificultad} onClick={() => handleDifficulty(dificultad)}>{dificultad}</button> )}
+            {dificultades.map(dificultad => <button className="btn-hover color-11" key={dificultad} onClick={() => handleDifficulty(dificultad)}>{dificultad}</button>)}
         </div>
       )
     }
 
     function handleDifficulty(dificultad){
-        setDifficulty(dificultad)
-        navigate("/question")
+      navigate("/question?difficulty=" +dificultad)
     }
   
     if (dificultades.length === 0){
@@ -41,8 +36,10 @@ function Dificulty(){
     }
     
     return (
-      <div className="App">
-        <h1>Seleccionar Dificultad</h1>
+      <div className="difficulty">
+        <h1>Preguntados</h1>
+        <img src="/logo.png" alt="Logo de Preguntados" className='logo'/>
+        <h2>Seleccionar Dificultad</h2>
         {renderDificultades()}
       </div>
     );
